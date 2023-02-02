@@ -1,0 +1,21 @@
+title: 获取cookies
+
+request:
+  method: get
+  url: ${url_unquote(referer)}  # 使用函数对变量进行二次处理
+  
+  
+extract: # 提取
+  token: [cookies, $.csrf_token, 0] # 从cookies使用jsonptah 提取第一个数据
+  username: [text, "U_NAME : '(.*)'", 0]
+  
+validate: 
+  equals: # 断言相等
+    状态码等200:
+      - 200
+      - ${code}
+    beifan存在于数据库中:
+      - 1
+      - ${sql(select count(1) from report where author='${username}')}
+  
+  

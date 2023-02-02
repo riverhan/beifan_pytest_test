@@ -1,0 +1,36 @@
+title: 获取csrf
+
+request:
+  method: get
+  url: http://47.107.116.139/phpwind/
+  
+  
+extract: # 提取
+  token: [cookies, $.csrf_token, 0] # 从cookies使用jsonptah 提取第一个数据
+  code: [status_code, (.*), 0]
+  body: [text, (.*), 0]
+  
+  
+validate:
+  equals: # 断言相等
+   状态码等200:
+     - 200
+     - ${code}
+  not_equals: # 断言不相等
+    状态码不等于404:
+      - 404
+      - ${code}
+    状态码不等于403:
+      - 403
+      - ${code}
+    状态码不等于500:
+      - 500
+      - ${code}
+  contains: # 断言包含
+    包含了HTML:
+      - html
+      - ${body}
+  not_contains: # 断言不包含
+    不包含包beifan:
+      - beifan
+      - ${body}

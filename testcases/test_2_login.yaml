@@ -1,0 +1,25 @@
+
+title: 登录
+
+
+request:
+  method: post
+  url: http://47.107.116.139/phpwind/index.php?m=u&c=login&a=dorun
+  data:
+    backurl: http://47.107.116.139/phpwind/
+    csrf_token: ${token}
+    password: beifan
+    username: beifan
+  headers:
+    Accept: application/json, text/javascript, /; q=0.01
+    X-Requested-With: XMLHttpRequest
+    
+extract:
+  referer: [json, $.referer, 0] # 从cookies使用jsonptah 提取第一个数据
+  
+  
+validate:
+  equals: # 断言相等
+   状态码等200:
+     - 200
+     - ${code}
