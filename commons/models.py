@@ -54,7 +54,6 @@ class CaseInfo:
                         assert a not in b, msg
 
 
-
 if __name__ == '__main__':
     with open(
             r"D:\PycharmProjects\TestClass\api_framework\testcases\test_2_login.yaml",

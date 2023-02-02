@@ -1,0 +1,14 @@
+title: 获取微信token鉴权码的接口
+request:
+  url: https://api.weixin.qq.com/cgi-bin/token
+  method: get
+  headers:
+    content-type: application/json
+  params:
+    grant_type: client_credential
+    appid: wx5ae4afba68ce4be2
+    secret: ec47648a89bea33f6d7f7e39d68bb3e7
+validate:
+  - eq: {expires_in: 7140}
+extract:
+  access_token: [json, $.access_token, 0]

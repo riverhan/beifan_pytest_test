@@ -14,9 +14,9 @@ from commons.session import Session
 session = Session()
 
 # yaml用例存放目录
-case_path = Path(r"D:\PycharmProjects\TestClass\api_framework\testcases")
+case_path = Path(r"E:\PycharmProjects\beifan_pytest\testcases\beifan")
 exchanger = Exchange(
-    r'D:\PycharmProjects\TestClass\api_framework\extract.yaml')
+    r'E:\PycharmProjects\beifan_pytest\extract.yaml')
 
 
 class TestAPI:  # 一个可以被pytest识别的测试类

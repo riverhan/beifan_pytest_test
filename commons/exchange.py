@@ -39,7 +39,6 @@ class Exchange:
             # print(f"{res=}")
         else:  # 是正则
             res = re.findall(expr, str(data))
-        print(f"{res=}")
         if res:  # 如果有数据
             value = res[index]
         else:  # 如果没有数据
